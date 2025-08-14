@@ -5,7 +5,7 @@ import Numbers from "./numbers";
 import Services from "./services";
 import Development from "./Development";
 import Recent from "./Recent";
-import Collab from "./collab";
+import Collab from "./Collab";
 import Working from "./working";
 import Footer from "./footer";
 function Home(){
