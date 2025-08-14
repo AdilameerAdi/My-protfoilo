@@ -30,10 +30,16 @@ export default function Navbar({ active, setActive, mobileMenuOpen, setMobileMen
 
         <div className="hidden lg:flex flex-1 justify-center">
           <ul className="flex gap-8 xl:gap-20 [&>li]:uppercase [&>li]:hover:border-b-2 [&>li]:hover:border-b-teal-500 [&>li]:hover:cursor-pointer [&>li]:mt-8 [&>li]:pb-4 [&>li]:text-sm xl:text-base">
-            <li onClick={() => handleTab("Home")}>Home</li>
-            <li onClick={() => handleTab("About")}>About</li>
+            <li onClick={() => handleTab("Home")}>
+              Home
+            </li>
+            <li onClick={() => handleTab("About")}>
+              About
+            </li>
             <li className="group relative">
-              Services
+              <div onClick={() => navigate("/Services")} className="cursor-pointer select-none">
+                Services
+              </div>
               <ul className="hidden absolute group-hover:flex bg-white top-full flex-col z-10 shadow-xl rounded-lg border border-gray-200 w-80 py-2">
                 <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("website-development")}>
                   Website Development
@@ -126,7 +132,7 @@ export default function Navbar({ active, setActive, mobileMenuOpen, setMobileMen
             <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { handleTab("About"); setMobileMenuOpen && setMobileMenuOpen(false); }}>
               About
             </div>
-            <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { handleTab("Services"); setMobileMenuOpen && setMobileMenuOpen(false); }}>
+            <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { navigate("/Services"); setMobileMenuOpen && setMobileMenuOpen(false); }}>
               Services
             </div>
             <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { handleTab("Portfolio"); setMobileMenuOpen && setMobileMenuOpen(false); }}>

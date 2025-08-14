@@ -132,6 +132,68 @@ export default function SupportPage() {
             <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-teal-500">
             <p className="text-gray-600 italic">"Professional and on time delivery."</p>
             <div className="flex text-yellow-400 mt-3">⭐⭐⭐⭐⭐</div>
+                </div>
+                </div>
+      )
+    },
+    hosting: {
+      title: "Domain & Web Hosting",
+      icon: "🌐",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-teal-500">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Domain Registration</h3>
+            <p className="text-gray-600 leading-relaxed">
+              I can help you register and manage domain names for your business. Get professional domain names that reflect your brand identity.
+            </p>
+            <div className="mt-4 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">Domain Registration (1 year)</span>
+                <span className="font-semibold text-teal-600">$12.99</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">Domain Transfer</span>
+                <span className="font-semibold text-teal-600">$9.99</span>
+              </div>
+              </div>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-teal-500">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Web Hosting Solutions</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Reliable hosting solutions to keep your website fast and secure. Choose from shared hosting, VPS, or dedicated hosting based on your needs.
+            </p>
+            <div className="mt-4 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">Shared Hosting (monthly)</span>
+                <span className="font-semibold text-teal-600">$3.99</span>
+                </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">VPS Hosting (monthly)</span>
+                <span className="font-semibold text-teal-600">$19.99</span>
+                </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">Dedicated Hosting (monthly)</span>
+                <span className="font-semibold text-teal-600">$79.99</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-teal-500">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">SSL Certificates</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Secure your website with SSL certificates. Protect your visitors' data and improve your search engine rankings.
+            </p>
+            <div className="mt-4 space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">Basic SSL Certificate</span>
+                <span className="font-semibold text-teal-600">$29.99/year</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">Wildcard SSL Certificate</span>
+                <span className="font-semibold text-teal-600">$99.99/year</span>
+              </div>
+            </div>
           </div>
         </div>
       )

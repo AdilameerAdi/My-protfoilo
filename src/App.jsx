@@ -1,5 +1,4 @@
 import Home from "../frontend/Home/Home";
-import logo from "../frontend/images/log.jpg";
  import { useState } from "react";
 import First from "../frontend/About/first";
 import ContactHeader from "../frontend/Home/contactHeader";
@@ -43,7 +42,7 @@ function App() {
           <div className="w-[90%] sm:w-2/3 md:w-1/2 lg:w-1/3 px-2 sm:px-4 py-1">
             <img
               className="w-full max-w-[120px] sm:max-w-[140px] md:max-w-[160px] h-14 sm:h-16 md:h-20 object-contain"
-              src={logo}
+              src="../frontend/images/log.jpg"
               alt="logo"
             />
           </div>

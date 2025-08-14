@@ -45,7 +45,7 @@ function ContactHeader() {
           </div>
         </div>
       </div>
-    </div>
+</div>
   );
 }
 

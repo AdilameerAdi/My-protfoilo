@@ -9,8 +9,82 @@ import {
   faLinkedin,
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+  const navigate = useNavigate();
+
+  const handleQuickLink = (link) => {
+    switch (link) {
+      case "Home":
+        navigate("/");
+        break;
+      case "About me":
+        navigate("/");
+        // You can add logic to set active tab to About
+        break;
+      case "Portfolio":
+        navigate("/");
+        // You can add logic to set active tab to Portfolio
+        break;
+      case "Pricing":
+        navigate("/support?section=pricing");
+        break;
+      case "Domain & Web Hosting":
+        navigate("/support?section=hosting");
+        break;
+      case "FAQs":
+        navigate("/support?section=faq");
+        break;
+      case "Testimonials":
+        navigate("/support?section=testimonials");
+        break;
+      case "Request a Quote":
+        navigate("/support?section=quote");
+        break;
+      case "Contact me":
+        navigate("/");
+        // You can add logic to set active tab to Contact
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleServiceLink = (service) => {
+    switch (service) {
+      case "Website Development":
+        navigate("/service/website-development");
+        break;
+      case "E-commerce Solutions":
+        navigate("/service/ecommerce-solution");
+        break;
+      case "WordPress Development":
+        navigate("/service/wordpress-development");
+        break;
+      case "Shopify Development":
+        navigate("/service/shopify-store-development");
+        break;
+      case "Logo Designing":
+        navigate("/service/logo-designing");
+        break;
+      case "Graphic Designing":
+        navigate("/service/graphic-designing");
+        break;
+      case "Mobile App Development":
+        navigate("/service/mobile-app-development");
+        break;
+      case "SEO & Digital Marketing":
+        navigate("/service/seo-digital-marketing");
+        break;
+      case "Website Maintenance":
+        navigate("/service/website-maintenance");
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <div className="bg-[#242328] w-full flex flex-col lg:flex-row">
@@ -20,16 +94,16 @@ export default function Footer() {
             <img
               className="h-[80px] md:h-[100px] p-4 md:p-7 pb-0 object-contain"
               src={log}
-              alt=""
+              alt="Adil Ameer Logo"
             />
           </div>
           <div>
             <p className="text-gray-500 mt-0 p-4 md:p-7 text-justify text-sm md:text-base leading-relaxed">
               I'm a freelance web designer and developer that operates in
-              Pakistan, I can also work remotely, servicing the entire country.
-              I specialise in creating marketing websites for great individuals
+              Pakistan. I can also work remotely, servicing the entire country.
+              I specialize in creating marketing websites for great individuals
               and small-medium sized businesses, helping them to market their
-              product or services successfully on the web. If you have an
+              products or services successfully on the web. If you have an
               upcoming project you'd like to discuss then please get in touch.
             </p>
           </div>
@@ -38,36 +112,36 @@ export default function Footer() {
         {/* Quick Links Section */}
         <div className="w-full lg:w-[200px] mx-2 md:mx-5 my-5 px-4 lg:px-0">
           <h1 className="text-white capitalize p-1 pt-6 lg:pt-10 text-base md:text-lg font-semibold">
-            quick links
+            Quick Links
           </h1>
           <ul className="[&>li]:text-gray-500 [&>li]:leading-loose pt-6 lg:pt-10 [&>li]:hover:text-[#41A5B0] [&>li]:cursor-pointer [&>li]:text-sm md:text-base">
-            <li>Home</li>
-            <li>About me</li>
-            <li>Portfolio</li>
-            <li>Pricing</li>
-            <li>Domain & Web Hosting</li>
-            <li>FAQs</li>
-            <li>Testimonials</li>
-            <li>Request a Quote</li>
-            <li>Contact me</li>
+            <li onClick={() => handleQuickLink("Home")}>Home</li>
+            <li onClick={() => handleQuickLink("About me")}>About Me</li>
+            <li onClick={() => handleQuickLink("Portfolio")}>Portfolio</li>
+            <li onClick={() => handleQuickLink("Pricing")}>Pricing</li>
+            <li onClick={() => handleQuickLink("Domain & Web Hosting")}>Domain & Web Hosting</li>
+            <li onClick={() => handleQuickLink("FAQs")}>FAQs</li>
+            <li onClick={() => handleQuickLink("Testimonials")}>Testimonials</li>
+            <li onClick={() => handleQuickLink("Request a Quote")}>Request a Quote</li>
+            <li onClick={() => handleQuickLink("Contact me")}>Contact Me</li>
           </ul>
         </div>
 
         {/* Services Section */}
         <div className="w-full lg:w-[200px] mx-2 md:mx-5 my-5 px-4 lg:px-0">
           <h1 className="text-white capitalize p-1 pt-6 lg:pt-10 text-base md:text-lg font-semibold">
-            my services
+            My Services
           </h1>
           <ul className="[&>li]:text-gray-500 [&>li]:leading-loose pt-6 lg:pt-10 [&>li]:hover:text-[#41A5B0] [&>li]:cursor-pointer [&>li]:text-sm md:text-base">
-            <li>Website Development</li>
-            <li>Ecommerce Solutions</li>
-            <li>WordPress Development</li>
-            <li>Shopify Development</li>
-            <li>Logo Designing</li>
-            <li>Graphic Designing</li>
-            <li>Android App Development</li>
-            <li>SEO / Digital Marketing</li>
-            <li>Website Maintenance</li>
+            <li onClick={() => handleServiceLink("Website Development")}>Website Development</li>
+            <li onClick={() => handleServiceLink("E-commerce Solutions")}>E-commerce Solutions</li>
+            <li onClick={() => handleServiceLink("WordPress Development")}>WordPress Development</li>
+            <li onClick={() => handleServiceLink("Shopify Development")}>Shopify Development</li>
+            <li onClick={() => handleServiceLink("Logo Designing")}>Logo Designing</li>
+            <li onClick={() => handleServiceLink("Graphic Designing")}>Graphic Designing</li>
+            <li onClick={() => handleServiceLink("Android App Development")}>Mobile App Development</li>
+            <li onClick={() => handleServiceLink("SEO / Digital Marketing")}>SEO & Digital Marketing</li>
+            <li onClick={() => handleServiceLink("Website Maintenance")}>Website Maintenance</li>
           </ul>
         </div>
 
@@ -108,11 +182,11 @@ export default function Footer() {
             </div>
 
             <h1 className="text-white capitalize mt-4 text-sm md:text-base">
-              Tell about your project:
+              Tell me about your project:
             </h1>
             <textarea
               name="project"
-              placeholder="Enter Project details...."
+              placeholder="Enter project details..."
               className="bg-white border-0 mt-2 h-8 md:h-10 w-full lg:w-[300px] block px-2 py-1 rounded text-sm md:text-base"
               required
             ></textarea>
@@ -121,7 +195,7 @@ export default function Footer() {
               className="capitalize border-[#41A5B0] border-2 mt-3 p-2 md:p-4 text-[#41A5B0] hover:bg-[#41A5B0] hover:text-white rounded-xl text-sm md:text-base transition-colors duration-300"
               type="submit"
             >
-              Send message
+              Send Message
             </button>
           </form>
           
@@ -130,20 +204,20 @@ export default function Footer() {
           
             {/* Email */}
             <a
-              href="mailto:adilameeradi@gmail.com"
+              href="mailto:adilammeradi@gmail.com"
               className="flex items-center space-x-2 hover:text-[#41A5B0] transition-colors duration-300"
             >
               <FontAwesomeIcon icon={faEnvelope} />
-              <span className="break-all">adilameeradi@gmail.com</span>
+              <span className="break-all">adilammeradi@gmail.com</span>
             </a>
 
             {/* Phone */}
             <a
-              href="tel:03007029003"
+              href="tel:+923007029003"
               className="flex items-center space-x-2 hover:text-[#41A5B0] transition-colors duration-300"
             >
               <FontAwesomeIcon icon={faPhone} />
-              <span>03007029003</span>
+              <span>+92 3007029003</span>
             </a>
           </div>
           

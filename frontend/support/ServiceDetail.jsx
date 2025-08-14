@@ -1,5 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Footer from "../Home/footer";
+import website from "../images/website.jpg";
+import wordpress from "../images/wordpress.jpg";
+import ecommer from "../images/ecommer.jpg";
+import shopify from "../images/shopify.jpg";
+import log from "../images/logo.jpg";
+import grap from "../images/grap.jpg";
+import mob from "../images/mob.jpg";
+import seo from "../images/seo.jpg";
+import calender from "../images/calender.png";
 
 export default function ServiceDetail() {
   const { serviceId } = useParams();
@@ -9,7 +18,7 @@ export default function ServiceDetail() {
   const serviceDetails = {
     "website-development": {
       title: "Website Development",
-      image: "/src/frontend/images/website.jpg",
+      image: {website},
       overview: "I specialize in creating custom, responsive, and high-performance websites that perfectly align with your business goals. From concept to deployment, I handle every aspect of web development to deliver exceptional results.",
       expertise: [
         "Custom website design and development",
@@ -33,7 +42,7 @@ export default function ServiceDetail() {
     },
     "wordpress-development": {
       title: "WordPress Development",
-      image: "/src/frontend/images/wordpress.jpg",
+      image: "../images/wordpress.jpg",
       overview: "I create professional WordPress themes, plugins, and customizations that transform your online presence. With extensive experience in WordPress development, I build powerful, scalable solutions that drive results.",
       expertise: [
         "Custom WordPress theme development",
@@ -57,7 +66,7 @@ export default function ServiceDetail() {
     },
     "ecommerce-solution": {
       title: "E-commerce Solution",
-      image: "/src/frontend/images/ecommer.jpg",
+      image: "../images/ecommer.jpg",
       overview: "I build complete e-commerce solutions that help you sell products online effectively. From simple online stores to complex multi-vendor platforms, I create solutions that drive sales and enhance customer experience.",
       expertise: [
         "Custom e-commerce website development",
@@ -81,7 +90,7 @@ export default function ServiceDetail() {
     },
     "shopify-store-development": {
       title: "Shopify Store Development",
-      image: "/src/frontend/images/shopify.jpg",
+      image: "../images/shopify.jpg",
       overview: "I specialize in creating custom Shopify stores that attract customers and boost sales. With deep knowledge of Shopify's platform, I build beautiful, functional stores that convert visitors into customers.",
       expertise: [
         "Custom Shopify theme development",
@@ -105,7 +114,7 @@ export default function ServiceDetail() {
     },
     "logo-designing": {
       title: "Logo Designing",
-      image: "/src/frontend/images/logo.jpg",
+      image: "../images/logo.jpg",
       overview: "I create unique, creative, and professional logos that define your brand identity. Each logo is carefully crafted to represent your brand values and make a lasting impression on your audience.",
       expertise: [
         "Brand identity design",
@@ -129,7 +138,7 @@ export default function ServiceDetail() {
     },
     "graphic-designing": {
       title: "Graphic Designing",
-      image: "/src/frontend/images/grap.jpg",
+      image: "../images/grap.jpg",
       overview: "I create eye-catching graphic designs for web, print, and social media campaigns. From business cards to social media posts, I design visuals that communicate your message effectively and enhance your brand presence.",
       expertise: [
         "Print design (business cards, brochures, flyers)",
@@ -153,7 +162,7 @@ export default function ServiceDetail() {
     },
     "mobile-app-development": {
       title: "Android / iOS Application",
-      image: "/src/frontend/images/mob.jpg",
+      image: "../images/mob.jpg",
       overview: "I develop mobile apps that deliver seamless experiences for Android and iOS users. From concept to app store deployment, I create intuitive, high-performance mobile applications that engage users and drive business growth.",
       expertise: [
         "Native Android app development",
@@ -177,7 +186,7 @@ export default function ServiceDetail() {
     },
     "seo-digital-marketing": {
       title: "SEO / Digital Marketing",
-      image: "/src/frontend/images/seo.jpg",
+      image: "../images/seo.jpg",
       overview: "I boost your online visibility and attract more customers with comprehensive SEO strategies and digital marketing solutions. From keyword optimization to content marketing, I help you dominate search results and grow your online presence.",
       expertise: [
         "Search Engine Optimization (SEO)",
@@ -201,7 +210,7 @@ export default function ServiceDetail() {
     },
     "website-maintenance": {
       title: "Monthly Maintenance of Websites",
-      image: "/src/frontend/images/calender.png",
+      image: "../images/calender.png",
       overview: "I keep your website secure, updated, and running smoothly every month. Regular maintenance ensures your website performs optimally, stays secure, and provides the best user experience for your visitors.",
       expertise: [
         "Website security monitoring",
@@ -244,7 +253,8 @@ export default function ServiceDetail() {
   }
 
   const handleGetInTouch = () => {
-    navigate("/contact");
+    navigate("/");
+    // You can add logic here to set the active tab to Contact when the main page loads
   };
 
   return (
