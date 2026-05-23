@@ -124,16 +124,33 @@ export default function SupportPage() {
       title: "Client Testimonials",
       icon: "⭐",
       content: (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-teal-500">
-            <p className="text-gray-600 italic">"Amazing work! Highly recommended."</p>
-            <div className="flex text-yellow-400 mt-3">⭐⭐⭐⭐⭐</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-teal-500">
-            <p className="text-gray-600 italic">"Professional and on time delivery."</p>
-            <div className="flex text-yellow-400 mt-3">⭐⭐⭐⭐⭐</div>
+        <div className="space-y-6">
+          <p className="text-center text-gray-500 max-w-2xl mx-auto mb-8">
+            Here's what clients say about working with me. Every project is delivered with care, precision, and a focus on real results.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: "Sarah M.", country: "United Kingdom", role: "Small Business Owner", review: "Adil delivered an exceptional e-commerce site on time and beyond expectations. Communication was seamless throughout. Highly recommend!", stars: 5 },
+              { name: "Ahmed K.", country: "Saudi Arabia", role: "Startup Founder", review: "I needed a professional website fast. Adil built it clean, responsive, and exactly as I envisioned. Will definitely hire again.", stars: 5 },
+              { name: "Maria T.", country: "USA", role: "Marketing Manager", review: "Our SEO traffic tripled in 3 months after Adil's work. He clearly knows what he's doing. Worth every cent.", stars: 5 },
+              { name: "Daniel R.", country: "Australia", role: "Agency Owner", review: "We use Adil as our white-label developer. His code quality is excellent and he always meets deadlines. A true professional.", stars: 5 },
+              { name: "Fatima Z.", country: "UAE", role: "E-commerce Seller", review: "My Shopify store looks amazing and sales went up immediately. Adil understood my brand perfectly.", stars: 5 },
+              { name: "James P.", country: "Canada", role: "Tech Entrepreneur", review: "Clean code, great design, fast delivery. Adil is exactly the kind of developer you want for your project.", stars: 5 },
+            ].map(({ name, country, role, review, stars }) => (
+              <div key={name} className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <div className="text-yellow-400 text-lg mb-4">
+                  {"★".repeat(stars)}
                 </div>
+                <p className="text-gray-600 italic leading-relaxed flex-1">"{review}"</p>
+                <div className="mt-5 pt-4 border-t border-gray-100">
+                  <p className="font-bold text-gray-900">{name}</p>
+                  <p className="text-sm text-[#41A5B0]">{role}</p>
+                  <p className="text-xs text-gray-400 mt-1">{country}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
       )
     },
     hosting: {

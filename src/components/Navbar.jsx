@@ -1,152 +1,233 @@
 import logo from "../../frontend/images/log.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
 
+const SERVICES = [
+  { id: "website-development", label: "Website Development" },
+  { id: "wordpress-development", label: "WordPress Development" },
+  { id: "ecommerce-solution", label: "E-commerce Solution" },
+  { id: "shopify-store-development", label: "Shopify Store Development" },
+  { id: "logo-designing", label: "Logo Designing" },
+  { id: "graphic-designing", label: "Graphic Designing" },
+  { id: "mobile-app-development", label: "Mobile App Development" },
+  { id: "seo-digital-marketing", label: "SEO & Digital Marketing" },
+  { id: "website-maintenance", label: "Website Maintenance" },
+];
+
 export default function Navbar({ active, setActive, mobileMenuOpen, setMobileMenuOpen }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  if (location.pathname.startsWith("/service/")) {
-    return null;
-  }
+  if (location.pathname.startsWith("/service/")) return null;
+
+  const closeMenu = () => setMobileMenuOpen && setMobileMenuOpen(false);
 
   const handleServiceClick = (serviceId) => {
     navigate(`/service/${serviceId}`);
+    closeMenu();
   };
 
   const handleTab = (tab) => {
     if (location.pathname === "/") {
       if (setActive) setActive(tab);
     } else {
+      if (setActive) setActive(tab);
       navigate("/");
     }
+    closeMenu();
   };
+
+  const handlePortfolioClick = () => {
+    navigate("/portfolio");
+    closeMenu();
+  };
+
+  const navLinkCls = (tab) =>
+    `uppercase cursor-pointer pb-3 text-sm xl:text-[15px] font-medium tracking-wide transition-all duration-200 border-b-2 whitespace-nowrap ${
+      active === tab
+        ? "border-teal-500 text-teal-600"
+        : "border-transparent text-gray-700 hover:border-teal-400 hover:text-teal-600"
+    }`;
+
+  const dropdownItemCls =
+    "px-4 py-2.5 text-sm text-gray-700 normal-case font-normal hover:bg-teal-50 hover:text-teal-700 hover:pl-6 cursor-pointer transition-all duration-200 border-l-2 border-transparent hover:border-teal-400";
 
   return (
     <>
-      <div className="flex w-full z-10 bg-white sticky top-0 shadow-md">
-        <div className="w-[90%] sm:w-2/3 md:w-1/2 lg:w-1/3 px-2 sm:px-4 py-1">
-          <img className="w-full max-w-[120px] sm:max-w-[140px] md:max-w-[160px] h-14 sm:h-16 md:h-20 object-contain" src={logo} alt="logo" />
-        </div>
+      {/* Main Navbar */}
+      <div className="w-full z-30 bg-white sticky top-0 shadow-sm border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-3 sm:px-5 flex items-center h-16 sm:h-18">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <img
+              className="h-12 sm:h-14 max-w-[130px] sm:max-w-[150px] object-contain cursor-pointer"
+              src={logo}
+              alt="Adil Ameer"
+              onClick={() => handleTab("Home")}
+            />
+          </div>
 
-        <div className="hidden lg:flex flex-1 justify-center">
-          <ul className="flex gap-8 xl:gap-20 [&>li]:uppercase [&>li]:hover:border-b-2 [&>li]:hover:border-b-teal-500 [&>li]:hover:cursor-pointer [&>li]:mt-8 [&>li]:pb-4 [&>li]:text-sm xl:text-base">
-            <li onClick={() => handleTab("Home")}>
-              Home
-            </li>
-            <li onClick={() => handleTab("About")}>
-              About
-            </li>
-            <li className="group relative">
-              <div onClick={() => navigate("/Services")} className="cursor-pointer select-none">
-                Services
-              </div>
-              <ul className="hidden absolute group-hover:flex bg-white top-full flex-col z-10 shadow-xl rounded-lg border border-gray-200 w-80 py-2">
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("website-development")}>
-                  Website Development
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("wordpress-development")}>
-                  WordPress Development
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("ecommerce-solution")}>
-                  E-commerce Solution
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("shopify-store-development")}>
-                  Shopify Store Development
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("logo-designing")}>
-                  Logo Designing
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("graphic-designing")}>
-                  Graphic Designing
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("mobile-app-development")}>
-                  Mobile App Development
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("seo-digital-marketing")}>
-                  SEO & Digital Marketing
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => handleServiceClick("website-maintenance")}>
-                  Website Maintenance
-                </li>
-              </ul>
-            </li>
-            <li onClick={() => handleTab("Portfolio")}>
-              Portfolio
-            </li>
-            <li className="group relative">
-              <div onClick={() => navigate("/support")} className="cursor-pointer">Support</div>
-              <ul className="hidden absolute group-hover:flex bg-white top-full flex-col z-10 shadow-xl rounded-lg border border-gray-200 w-80 py-2">
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => navigate("/support?section=faq")}>
-                  Frequently Asked Questions
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => navigate("/support?section=pricing")}>
-                  Website Pricing
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => navigate("/support?section=testimonials")}>
-                  Client Testimonials
-                </li>
-                <li className="px-4 py-3 hover:bg-teal-50 hover:text-teal-700 hover:border-l-4 hover:border-l-teal-500 cursor-pointer transition-all duration-300 transform hover:translate-x-1 hover:shadow-md rounded-r-lg" onClick={() => navigate("/support?section=quote")}>
-                  Get a Custom Quote
-                </li>
-              </ul>
-            </li>
-            <li onClick={() => handleTab("Contact")}>
-              Contact
-            </li>
-          </ul>
-        </div>
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex flex-1 justify-center">
+            <ul className="flex items-end gap-7 xl:gap-10 mt-5 pb-0 h-16 sm:h-18">
+              <li className={navLinkCls("Home")} onClick={() => handleTab("Home")}>Home</li>
+              <li className={navLinkCls("About")} onClick={() => handleTab("About")}>About</li>
 
-        <div className="w-[10%] sm:w-1/3 md:w-1/2 lg:hidden flex items-center justify-center px-1 sm:px-2">
-          <button
-            onClick={() => setMobileMenuOpen && setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-gray-700 hover:text-teal-500 focus:outline-none focus:text-teal-500 p-2 rounded-md hover:bg-gray-100 transition-colors duration-200"
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
+              {/* Services dropdown */}
+              <li className={`${navLinkCls("Services")} group relative`}>
+                <span onClick={() => navigate("/Services")} className="select-none flex items-center gap-1">
+                  Services
+                  <svg className="w-3.5 h-3.5 mt-0.5 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+                <ul className="hidden absolute group-hover:block bg-white top-full left-1/2 -translate-x-1/2 z-50 shadow-xl rounded-xl border border-gray-100 w-64 py-2 mt-1 animate-fade-in">
+                  {SERVICES.map((s) => (
+                    <li
+                      key={s.id}
+                      className={dropdownItemCls}
+                      onClick={(e) => { e.stopPropagation(); handleServiceClick(s.id); }}
+                    >
+                      {s.label}
+                    </li>
+                  ))}
+                </ul>
+              </li>
 
-      {mobileMenuOpen && (
-        <div className="lg:hidden fixed top-0 right-0 w-80 h-full bg-white border border-gray-200 shadow-xl z-50">
-          <div className="flex justify-between items-center p-4 border-b border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-800">Menu</h3>
+              <li className={navLinkCls("Portfolio")} onClick={handlePortfolioClick}>Portfolio</li>
+
+              {/* Support dropdown */}
+              <li className={`${navLinkCls("Support")} group relative`}>
+                <span onClick={() => navigate("/support")} className="select-none flex items-center gap-1">
+                  Support
+                  <svg className="w-3.5 h-3.5 mt-0.5 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+                <ul className="hidden absolute group-hover:block bg-white top-full left-1/2 -translate-x-1/2 z-50 shadow-xl rounded-xl border border-gray-100 w-60 py-2 mt-1">
+                  {[
+                    { label: "Frequently Asked Questions", section: "faq" },
+                    { label: "Website Pricing", section: "pricing" },
+                    { label: "Client Testimonials", section: "testimonials" },
+                    { label: "Get a Custom Quote", section: "quote" },
+                  ].map(({ label, section }) => (
+                    <li
+                      key={section}
+                      className={dropdownItemCls}
+                      onClick={(e) => { e.stopPropagation(); navigate(`/support?section=${section}`); closeMenu(); }}
+                    >
+                      {label}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+
+              <li className={navLinkCls("Contact")} onClick={() => handleTab("Contact")}>Contact</li>
+            </ul>
+          </div>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center ml-4">
             <button
-              onClick={() => setMobileMenuOpen && setMobileMenuOpen(false)}
-              className="text-gray-500 hover:text-gray-700 p-2 rounded-md hover:bg-gray-100"
+              onClick={() => handleTab("Contact")}
+              className="bg-[#41A5B0] hover:bg-[#2dbccb] text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-all duration-300 shadow hover:shadow-md hover:scale-105 whitespace-nowrap"
+            >
+              Hire Me
+            </button>
+          </div>
+
+          {/* Mobile Hamburger */}
+          <div className="lg:hidden ml-auto">
+            <button
+              onClick={() => setMobileMenuOpen && setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-gray-600 hover:text-teal-500 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              aria-label="Toggle menu"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
             </button>
           </div>
-          <div className="px-4 py-4 space-y-2">
-            <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { handleTab("Home"); setMobileMenuOpen && setMobileMenuOpen(false); }}>
-              Home
-            </div>
-            <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { handleTab("About"); setMobileMenuOpen && setMobileMenuOpen(false); }}>
-              About
-            </div>
-            <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { navigate("/Services"); setMobileMenuOpen && setMobileMenuOpen(false); }}>
-              Services
-            </div>
-            <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { handleTab("Portfolio"); setMobileMenuOpen && setMobileMenuOpen(false); }}>
-              Portfolio
-            </div>
-            <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { navigate("/support"); setMobileMenuOpen && setMobileMenuOpen(false); }}>
-              Support
-            </div>
-            <div className="px-4 py-3 text-base font-medium text-gray-700 hover:text-teal-500 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors duration-200" onClick={() => { handleTab("Contact"); setMobileMenuOpen && setMobileMenuOpen(false); }}>
-              Contact
-            </div>
-          </div>
         </div>
+      </div>
+
+      {/* Mobile Backdrop */}
+      {mobileMenuOpen && (
+        <div
+          className="lg:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-[2px]"
+          onClick={closeMenu}
+        />
       )}
+
+      {/* Mobile Drawer */}
+      <div
+        className={`lg:hidden fixed top-0 right-0 h-full w-[290px] max-w-[85vw] bg-white shadow-2xl z-50 flex flex-col transition-transform duration-300 ease-in-out ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        {/* Drawer Header */}
+        <div className="flex justify-between items-center px-5 py-4 border-b border-gray-100">
+          <img src={logo} alt="Logo" className="h-10 object-contain" />
+          <button
+            onClick={closeMenu}
+            className="text-gray-500 hover:text-gray-800 p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+            aria-label="Close menu"
+          >
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Drawer Links */}
+        <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
+          {[
+            { label: "Home", action: () => handleTab("Home"), isActive: active === "Home" },
+            { label: "About", action: () => handleTab("About"), isActive: active === "About" },
+            { label: "Portfolio", action: handlePortfolioClick, isActive: false },
+            { label: "Contact", action: () => handleTab("Contact"), isActive: active === "Contact" },
+          ].map(({ label, action, isActive }) => (
+            <div
+              key={label}
+              onClick={action}
+              className={`px-4 py-3 rounded-xl cursor-pointer font-medium text-[15px] transition-all duration-200 ${
+                isActive
+                  ? "bg-teal-50 text-teal-700 border-l-4 border-teal-500 pl-3"
+                  : "text-gray-700 hover:bg-gray-50 hover:text-teal-600"
+              }`}
+            >
+              {label}
+            </div>
+          ))}
+
+          <div
+            onClick={() => { navigate("/Services"); closeMenu(); }}
+            className="px-4 py-3 rounded-xl cursor-pointer font-medium text-[15px] text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition-all duration-200"
+          >
+            Services
+          </div>
+
+          <div
+            onClick={() => { navigate("/support"); closeMenu(); }}
+            className="px-4 py-3 rounded-xl cursor-pointer font-medium text-[15px] text-gray-700 hover:bg-gray-50 hover:text-teal-600 transition-all duration-200"
+          >
+            Support
+          </div>
+        </nav>
+
+        {/* Drawer Footer CTA */}
+        <div className="p-4 border-t border-gray-100">
+          <button
+            onClick={() => handleTab("Contact")}
+            className="w-full bg-[#41A5B0] hover:bg-[#2dbccb] text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-md text-[15px]"
+          >
+            Hire Me
+          </button>
+        </div>
+      </div>
     </>
   );
-} 
+}

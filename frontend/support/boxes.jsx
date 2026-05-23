@@ -17,49 +17,49 @@ export default function Boxes() {
       id: "website-development",
       title: "Website Development",
       img: website,
-      desc: "Custom, responsive, and high-performance websites tailored to your business needs. ...",
+      desc: "Custom, responsive, and high-performance websites tailored to your business needs.",
     },
     {
       id: "wordpress-development",
       title: "WordPress Development",
       img: wordpress,
-      desc: "Professional WordPress themes, plugins, and customization for your online presence. .....",
+      desc: "Professional WordPress themes, plugins, and customization for your online presence.",
     },
     {
       id: "ecommerce-solution",
       title: "E-commerce Solution",
       img: ecommer,
-      desc: "Complete e-commerce solutions to sell your products online with ease. .....",
+      desc: "Complete e-commerce solutions to sell your products online with ease.",
     },
     {
       id: "shopify-store-development",
       title: "Shopify Store Development",
       img: shopify,
-      desc: "Custom Shopify stores designed to attract customers and boost sales. ......",
+      desc: "Custom Shopify stores designed to attract customers and boost sales.",
     },
     {
       id: "logo-designing",
       title: "Logo Designing",
       img: log,
-      desc: "Unique, creative, and professional logos that define your brand identity. ....",
+      desc: "Unique, creative, and professional logos that define your brand identity.",
     },
     {
       id: "graphic-designing",
       title: "Graphic Designing",
       img: grap,
-      desc: "Eye-catching graphic designs for web, print, and social media campaigns.  .....",
+      desc: "Eye-catching graphic designs for web, print, and social media campaigns.",
     },
     {
       id: "mobile-app-development",
       title: "Android / iOS Application",
       img: mob,
-      desc: "Mobile apps that deliver seamless experiences for Android and iOS users.....",
+      desc: "Mobile apps that deliver seamless experiences for Android and iOS users.",
     },
     {
       id: "seo-digital-marketing",
       title: "SEO / Digital Marketing",
       img: seo,
-      desc: "Boost your online visibility and attract more customers with SEO strategies. ....",
+      desc: "Boost your online visibility and attract more customers with SEO strategies.",
     },
     {
       id: "website-maintenance",
@@ -89,6 +89,7 @@ rounded-lg overflow-hidden transition-all duration-300 will-change-transform wil
               <img
                 src={service.img}
                 alt={service.title}
+                loading="lazy"
                 className="w-full h-32 sm:h-36 md:h-40 object-cover"
               />
               <div className="p-3 md:p-4">

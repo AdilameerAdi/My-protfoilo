@@ -3,37 +3,42 @@ import back from "../images/back.jpg";
 export default function Services() {
   return (
     <div
-      style={{ backgroundImage: `url(${back})` }}
-      className="w-full min-h-[400px] md:h-[500px] lg:h-[600px] bg-no-repeat bg-cover bg-center rounded-2xl border-2 border-red-200 mx-4 md:mx-8 lg:mx-0"
+      style={{ backgroundImage: `url(${back})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}
+      className="w-full min-h-[420px] md:min-h-[520px] lg:min-h-[600px] flex items-center"
     >
-      <style>
-        {`
-          div {
-            background-size: cover;
-          }
-        `}
-      </style>
-      <div className="w-full md:w-3/4 lg:w-1/2 mt-8 md:mt-16 lg:mt-20 px-4 md:px-8 lg:px-0">
-        <h1 className="text-center text-[#41A5B0] text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+      <div className="w-full md:w-3/4 lg:w-1/2 px-6 sm:px-10 md:px-14 py-14">
+        <p className="text-[#2dbccb] text-sm font-semibold uppercase tracking-widest mb-2">
+          Welcome
+        </p>
+        <h1 className="text-[#41A5B0] text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-4">
           Welcome to My Online Desk!
         </h1>
-        <h2 className="text-center text-lg sm:text-xl md:text-2xl text-amber-700 p-3 leading-relaxed">
-          Explore my range of professional web development services designed to
-          bring your ideas to life.
+        <h2 className="text-lg sm:text-xl md:text-2xl text-amber-600 mb-4 leading-relaxed font-medium">
+          Explore professional web development services designed to bring your ideas to life.
         </h2>
-        <p className="text-base sm:text-lg md:text-xl pl-2 md:pl-5 text-center leading-relaxed">
-          I'm <span className="text-xl sm:text-2xl font-medium">Adil Ameer</span>, a
-          freelance web developer from Pakistan with 2 years of hands-on
-          experience in creating modern, responsive, and user-friendly websites.
-          Over this time, I've worked with clients from different parts of the
-          world, delivering solutions that combine creativity, functionality,
-          and clean design. From business websites to personal portfolios, I've
-          built a reputation for delivering professional, reliable, and visually
-          appealing work that helps brands stand out online.
+        <p className="text-gray-800 text-base sm:text-lg leading-relaxed mb-6 bg-white/70 rounded-xl p-4">
+          I'm <span className="text-xl font-bold text-gray-900">Adil Ameer</span>, a freelance
+          web developer from Pakistan with 5+ years of hands-on experience building modern,
+          responsive, and user-friendly websites. I've worked with clients worldwide — delivering
+          solutions that blend creativity, functionality, and clean design. From business websites
+          to personal portfolios, I'm trusted for professional, reliable, and visually impactful work.
         </p>
-        <button className="rounded-2xl p-3 md:p-4 bg-[#41A5B0] mx-auto block hover:bg-yellow-50 hover:font-bold hover:text-lg md:hover:text-xl transition hover:underline decoration-amber-600 transform duration-700 hover:cursor-pointer mt-4 text-sm md:text-base">
-          More Services
-        </button>
+        <div className="flex gap-4 flex-wrap">
+          <a
+            href="#services"
+            className="rounded-xl px-6 py-3 bg-[#41A5B0] text-white font-semibold hover:bg-[#2dbccb] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+          >
+            Explore Services
+          </a>
+          <a
+            href="https://wa.me/923007029003"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl px-6 py-3 border-2 border-[#41A5B0] text-[#41A5B0] font-semibold hover:bg-[#41A5B0] hover:text-white transition-all duration-300"
+          >
+            Chat on WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -10,102 +10,124 @@ import mob from "../images/mob.jpg";
 import seo from "../images/seo.jpg";
 import calender from "../images/calender.png";
 
+const allServices = [
+  { id: "website-development",       title: "Website Development",           img: website,  desc: "Custom, responsive, and high-performance websites tailored to your business needs." },
+  { id: "wordpress-development",     title: "WordPress Development",         img: wordpress, desc: "Professional WordPress themes, plugins, and customization for your online presence." },
+  { id: "ecommerce-solution",        title: "E-commerce Solution",           img: ecommer,  desc: "Complete e-commerce solutions to sell your products online with ease." },
+  { id: "shopify-store-development", title: "Shopify Store Development",     img: shopify,  desc: "Custom Shopify stores designed to attract customers and boost sales." },
+  { id: "logo-designing",            title: "Logo Designing",                img: log,      desc: "Unique, creative, and professional logos that define your brand identity." },
+  { id: "graphic-designing",         title: "Graphic Designing",             img: grap,     desc: "Eye-catching graphic designs for web, print, and social media campaigns." },
+  { id: "mobile-app-development",    title: "Android / iOS Application",     img: mob,      desc: "Mobile apps that deliver seamless experiences for Android and iOS users." },
+  { id: "seo-digital-marketing",     title: "SEO / Digital Marketing",       img: seo,      desc: "Boost your online visibility and attract more customers with SEO strategies." },
+  { id: "website-maintenance",       title: "Monthly Website Maintenance",   img: calender, desc: "Keep your website secure, updated, and running smoothly every month." },
+];
+
 export default function Development() {
   const navigate = useNavigate();
-
-  const allServices = [
-    { id: "website-development", title: "Website Development", img: website, desc: "Custom, responsive, and high-performance websites tailored to your business needs." },
-    { id: "wordpress-development", title: "WordPress Development", img: wordpress, desc: "Professional WordPress themes, plugins, and customization for your online presence." },
-    { id: "ecommerce-solution", title: "E-commerce Solution", img: ecommer, desc: "Complete e-commerce solutions to sell your products online with ease." },
-    { id: "shopify-store-development", title: "Shopify Store Development", img: shopify, desc: "Custom Shopify stores designed to attract customers and boost sales." },
-    { id: "logo-designing", title: "Logo Designing", img: log, desc: "Unique, creative, and professional logos that define your brand identity." },
-    { id: "graphic-designing", title: "Graphic Designing", img: grap, desc: "Eye-catching graphic designs for web, print, and social media campaigns." },
-    { id: "mobile-app-development", title: "Android / iOS Application", img: mob, desc: "Mobile apps that deliver seamless experiences for Android and iOS users." },
-    { id: "seo-digital-marketing", title: "SEO / Digital Marketing", img: seo, desc: "Boost your online visibility and attract more customers with SEO strategies." },
-    { id: "website-maintenance", title: "Monthly Maintenance of Websites", img: calender, desc: "Keep your website secure, updated, and running smoothly every month." },
-  ];
-
   const [services, setServices] = useState(allServices);
   const [visibleCount, setVisibleCount] = useState(4);
 
-  // Adjust number of cards based on screen width
   useEffect(() => {
     const updateCount = () => {
-      if (window.innerWidth < 640) {
-        setVisibleCount(2); // mobile
-      } else if (window.innerWidth < 1024) {
-        setVisibleCount(3); // tablet
-      } else {
-        setVisibleCount(4); // laptop/desktop
-      }
+      if (window.innerWidth < 640) setVisibleCount(2);
+      else if (window.innerWidth < 1024) setVisibleCount(3);
+      else setVisibleCount(4);
     };
     updateCount();
     window.addEventListener("resize", updateCount);
     return () => window.removeEventListener("resize", updateCount);
   }, []);
 
-  // Auto-rotate every 5s
   useEffect(() => {
     const interval = setInterval(() => {
       setServices((prev) => {
         const updated = [...prev];
-        const first = updated.shift();
-        updated.push(first);
+        updated.push(updated.shift());
         return updated;
       });
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-  const handleServiceClick = (id) => {
-    navigate(`/service/${id}`);
-  };
-
   return (
-    <>
-      <div className="mt-8 md:mt-12 lg:mt-15 px-4 md:px-8 lg:px-0">
-        <div className="text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-            My Development <span className="text-[#2dbccb] font-bold"> Services</span>
-          </h1>
-          <p className="mx-4 md:mx-20 lg:mx-40 mt-4 text-base sm:text-lg md:text-xl leading-relaxed">
-            With experience serving diverse clients, I specialize in delivering
-            impactful web solutions that not only enhance your online presence but
-            also drive measurable results. My focus is on creating cost-effective,
-            high-quality websites that help your business grow and stand out in the
-            digital space.
-          </p>
-        </div>
+    <section className="py-12 md:py-16">
+      {/* Section Header */}
+      <div className="text-center px-4 mb-10">
+        <p className="text-[#41A5B0] text-sm font-semibold uppercase tracking-widest mb-2 stagger-item">What I Offer</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight section-title-underline stagger-item">
+          My Development <span className="text-[#2dbccb]">Services</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-gray-500 text-base sm:text-lg leading-relaxed px-2 stagger-item">
+          With experience serving diverse clients, I specialize in delivering impactful web solutions
+          that enhance your online presence and drive measurable results.
+        </p>
       </div>
 
       {/* Carousel */}
-      <div className="mt-8">
-        <div className="flex gap-4 justify-center transition-all duration-500">
-          {services.slice(0, visibleCount).map((service) => (
+      <div className="px-4 sm:px-6 md:px-8">
+        <div className="flex gap-4 sm:gap-5 max-w-6xl mx-auto">
+          {services.slice(0, visibleCount).map((service, index) => (
             <div
               key={service.id}
-              onClick={() => handleServiceClick(service.id)}
-              className="relative w-40 sm:w-48 md:w-56 bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer group transition-transform duration-300 hover:scale-105"
+              onClick={() => navigate(`/service/${service.id}`)}
+              className="relative flex-1 min-w-0 bg-white rounded-2xl overflow-hidden shadow-md cursor-pointer group transition-all duration-300 hover:scale-[1.03] hover:shadow-xl border border-gray-100 service-card-glow stagger-item"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <img src={service.img} alt={service.title} className="w-full h-32 sm:h-36 md:h-40 object-cover" />
+              <img
+                src={service.img}
+                alt={service.title}
+                loading="lazy"
+                className="w-full h-36 sm:h-40 md:h-48 object-cover"
+              />
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h2 className="text-white font-semibold text-sm sm:text-base mb-2">{service.title}</h2>
-                <p className="text-gray-200 text-xs sm:text-sm mb-3">{service.desc}</p>
-                <button className="bg-teal-500 hover:bg-teal-600 text-white px-2 py-1 rounded text-xs sm:text-sm">
-                  Read More
-                </button>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex flex-col justify-end p-3 sm:p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm sm:text-base mb-1 leading-snug">{service.title}</h3>
+                <p className="text-gray-200 text-xs sm:text-sm mb-3 leading-relaxed line-clamp-2">{service.desc}</p>
+                <span className="inline-block bg-[#2dbccb] text-white text-xs font-semibold px-3 py-1 rounded-full w-fit">
+                  Learn More →
+                </span>
               </div>
 
-              {/* Title below image */}
-              <div className="p-2 bg-white">
-                <h2 className="text-center text-sm sm:text-base font-semibold">{service.title}</h2>
+              {/* Card Footer */}
+              <div className="p-2.5 sm:p-3 bg-white">
+                <h3 className="text-center text-xs sm:text-sm font-semibold text-gray-800 leading-tight line-clamp-2">
+                  {service.title}
+                </h3>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Dot Indicators */}
+        <div className="flex justify-center gap-1.5 mt-6">
+          {allServices.map((s, i) => {
+            const activeIndex = allServices.indexOf(services[0]);
+            const isActive = i >= activeIndex && i < activeIndex + visibleCount;
+            return (
+              <div
+                key={s.id}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  isActive ? "w-6 bg-[#2dbccb]" : "w-1.5 bg-gray-300"
+                }`}
+              />
+            );
+          })}
+        </div>
       </div>
-    </>
+
+      {/* View All CTA */}
+      <div className="text-center mt-8 px-4">
+        <button
+          onClick={() => navigate("/Services")}
+          className="inline-flex items-center gap-2 border-2 border-[#41A5B0] text-[#41A5B0] hover:bg-[#41A5B0] hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300"
+        >
+          View All Services
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </button>
+      </div>
+    </section>
   );
 }

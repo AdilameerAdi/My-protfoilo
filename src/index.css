@@ -1,2 +1,346 @@
 @import "tailwindcss";
 @import "./responsive.css";
+
+/* ============================================
+   PAGE TRANSITIONS & ENTRANCE ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-page {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* ============================================
+   NAVBAR ANIMATIONS
+   ============================================ */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav-slide-in {
+  animation: slideInFromLeft 0.5s ease-out;
+}
+
+.nav-cta-slide-in {
+  animation: slideInFromRight 0.6s ease-out;
+}
+
+/* ============================================
+   HERO SECTION ANIMATIONS
+   ============================================ */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeftHero {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-heading {
+  animation: slideUpFade 0.7s ease-out 0.2s both;
+}
+
+.hero-subtext {
+  animation: slideUpFade 0.7s ease-out 0.4s both;
+}
+
+.hero-buttons {
+  animation: slideUpFade 0.7s ease-out 0.6s both;
+}
+
+/* ============================================
+   CARD ANIMATIONS
+   ============================================ */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-bounce-in {
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.card-slide-in {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.service-card-animation {
+  animation: bounceIn 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Service card glow hover effect */
+.service-card-glow:hover {
+  box-shadow: 0 0 25px rgba(65, 165, 176, 0.4),
+              0 10px 30px rgba(65, 165, 176, 0.2);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(65, 165, 176, 0.4),
+                0 10px 30px rgba(65, 165, 176, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(65, 165, 176, 0.6),
+                0 15px 40px rgba(65, 165, 176, 0.3);
+  }
+}
+
+/* ============================================
+   BUTTON ANIMATIONS
+   ============================================ */
+@keyframes buttonGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(65, 165, 176, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(65, 165, 176, 0.6);
+  }
+}
+
+.btn-glow:hover {
+  animation: buttonGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.btn-shimmer {
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   SECTION HEADER ANIMATIONS
+   ============================================ */
+@keyframes underlineSlide {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.section-title-underline {
+  position: relative;
+}
+
+.section-title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #41A5B0, #2dbccb);
+  animation: underlineSlide 0.8s ease-out forwards;
+  border-radius: 2px;
+}
+
+/* ============================================
+   TEXT ANIMATIONS
+   ============================================ */
+@keyframes fadeInWord {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-word {
+  animation: fadeInWord 0.6s ease-out;
+}
+
+/* ============================================
+   FLOATING ANIMATIONS
+   ============================================ */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ============================================
+   ICON ANIMATIONS
+   ============================================ */
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.icon-bounce:hover {
+  animation: iconBounce 0.6s ease-in-out infinite;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATION
+   ============================================ */
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  animation: scrollReveal 0.8s ease-out forwards;
+}
+
+/* ============================================
+   FORM INPUT ANIMATIONS
+   ============================================ */
+@keyframes inputFocus {
+  from {
+    border-color: #e5e7eb;
+    box-shadow: 0 0 0 0 rgba(65, 165, 176, 0);
+  }
+  to {
+    border-color: #41A5B0;
+    box-shadow: 0 0 0 3px rgba(65, 165, 176, 0.1);
+  }
+}
+
+.input-focus-animation:focus {
+  animation: inputFocus 0.3s ease-out forwards;
+}
+
+/* ============================================
+   LOADING & SKELETON
+   ============================================ */
+@keyframes shimmerLoading {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton-loading {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 1000px 100%;
+  animation: shimmerLoading 2s infinite;
+}
+
+/* ============================================
+   STAGGER ANIMATIONS (for lists)
+   ============================================ */
+.stagger-item {
+  animation: slideInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.05s; }
+.stagger-item:nth-child(2) { animation-delay: 0.1s; }
+.stagger-item:nth-child(3) { animation-delay: 0.15s; }
+.stagger-item:nth-child(4) { animation-delay: 0.2s; }
+.stagger-item:nth-child(5) { animation-delay: 0.25s; }
+.stagger-item:nth-child(6) { animation-delay: 0.3s; }
+.stagger-item:nth-child(7) { animation-delay: 0.35s; }
+.stagger-item:nth-child(8) { animation-delay: 0.4s; }
+.stagger-item:nth-child(9) { animation-delay: 0.45s; }
+
+/* ============================================
+   SMOOTH TRANSITIONS
+   ============================================ */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+a, button {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
